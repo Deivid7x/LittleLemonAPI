@@ -175,7 +175,7 @@ class DeliveryCrewViewSet(viewsets.ViewSet):
         return Response({"message": "user added to the delivery crew group"}, 200)
 
     def destroy(self, request):
-        #only for super admin and managers
+        # only for super admin and managers
         if self.request.user.is_superuser is False:
             if self.request.user.groups.filter(name='Manager').exists() is False:
                 return Response({"message": "forbidden"}, status.HTTP_403_FORBIDDEN)
